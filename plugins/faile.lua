@@ -1,0 +1,27 @@
+--[[ 
+▀▄ ▄▀▀▄▄▀▀▄▄▀▀▄▄▀▀▄▄▀▀▄▄▀▀▄▄▀▀▄▀▄▄▀▀▄▄▀▀▄▄▀▀▄▄▀▀          
+▀▄ ▄▀                                      ▀▄ ▄▀ 
+▀▄ ▄▀    BY  NOORI   @HAMOUD56             ▀▄ ▄▀ 
+▀▄ ▄▀     BY  NOORI (@wosambot)            ▀▄ ▄▀ 
+▀▄ ▄▀ JUST WRITED BY  wissam alahvazi      ▀▄ ▄▀   
+▀▄ ▄▀       get file  : جلب ملف             ▀▄ ▄▀ 
+▀▄▀▀▄▄▀▀▄▄▀▄▄▀▀▄▄▀▀▄▄▀▄▄▀▀▄▄▀▀▄▄▀▄▄▀▀▄▄▀▀▄▄▀▄▄▀▀
+--]]
+local function run(msg, matches)
+  if matches[1] == "عطني ملف" then
+    local file = matches[2]
+    if is_sudo(msg) then --sudo only !
+      local receiver = get_receiver(msg)
+      send_document(receiver, "./plugins/"..file..".lua", ok_cb, false)
+      else 
+        return nil
+    end
+  end
+end
+
+return {
+  patterns = {
+  "^(عطني ملف) (.*)$"
+  },
+  run = run
+} 
